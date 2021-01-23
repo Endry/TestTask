@@ -7,9 +7,9 @@ import java.io.IOException;
 
 
 @SpringBootApplication
-public class TestTaskApplication {
+public class Application {
     public static void main(String args[]) throws IOException {
-        SpringApplication.run(TestTaskApplication.class, args);
+        SpringApplication.run(Application.class, args);
         /*Parser parser = new Parser();
         parser.parse();*/
     }
