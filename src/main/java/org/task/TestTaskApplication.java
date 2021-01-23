@@ -2,12 +2,15 @@ package org.task;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+
+import java.io.IOException;
 
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+@SpringBootApplication
 public class TestTaskApplication {
-    public static void main(String args[]){SpringApplication.run(TestTaskApplication.class, args); }
+    public static void main(String args[]) throws IOException {
+        SpringApplication.run(TestTaskApplication.class, args);
+        /*Parser parser = new Parser();
+        parser.parse();*/
+    }
 }
