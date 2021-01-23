@@ -1,14 +1,70 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"> <!-- Тут ми підключаємо якусь сторонню штуку, не забувай що ти не тупо пишеш на html/css ти пишеш з використанням spring. -->
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Головна сторінка</title>
+    <title>Solutions from the NETHope team</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css" th:href="@{/css/styles.css}" />
 </head>
 <body>
-<div>
-    <p class="temp">An example of how works class.</p>
+<div class="base">
+    <div id="bloc_m">
+        <header>
+            <div class="post-wrap">
+                <div class="post-item">
+                    <div class="item-content">
+                        <div class="item-footer">
+                            <img th:src="@{/additionally/set.png}" alt="" align="left">
+                            <a class="link"><span>Buying Buckwheat</span></a>
+                            <div class="link">
+                                    <span>
+                                        <div class="items">
+                                            <p>Країна Виробник:</p>
+                                            <select class="select-css">
+                                                <option>Україна</option>
+                                                <option>Германія</option>
+                                                <option>Росія</option>
+                                                <option>Польща</option>
+                                            </select>
+                                            <p>Вага:</p>
+                                                <div class='multi-range' data-lbound='200' data-ubound='1200'>
+                                                <hr/>
+                                                <input type='range' min='200' max='1200' step='100' value='200' oninput='this.parentNode.dataset.lbound=this.value;'/>
+                                                <input type='range' min='200' max='1200' step='100' value='1200' oninput='this.parentNode.dataset.ubound=this.value;'/>
+                                                </div>
+                                            <div style="margin: -2px 0 0 85px;"><button class="button_st" style="margin-left: 10px;">Пошук</button></div>
+                                        </div>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <hr width="85%">
+
+        <div class="main">
+            <table>
+                <tr>
+                    <th colspan="2">Назва</th>
+                    <th><div class="sort_price">Ціна</div></th>
+                    <th>Країна виробник</th>
+                    <th>Вага</th>
+                </tr>
+                <tr>
+                    <td><a href="#"><img src="https://rice.ua/wp-content/uploads/2019/08/Krupa_Grecka_Nesmaj_190-uk.jpg,qx30436.pagespeed.ce.h4j10AktjR.jpg"></a></td>
+                    <td>Крупа гречана Август</td>
+                    <td>55 грн.</td>
+                    <td>Україна</td>
+                    <td>1000</td>
+                </tr>
+            </table>
+            <div class="info_main">
+                <img th:src="@{/additionally/info.png}">
+                <div class="info_block"><p>Для сортування за категорією 'Ціна'<br>виберіть даний стовпець в таблиці.</p></div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>An example of how works tag(p).</p>
 </body>
 </html>
