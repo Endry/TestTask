@@ -18,28 +18,27 @@ public class DataController {
     Grechka grechka;
     @RequestMapping("/")
     public void getSortedData() throws IOException {
-        //array = parser.parse();
+        array = parser.parse();
         /*
         array =  parser.sort();
         for (int i = 0;i<array.size();i++){
             System.out.println(array.get(i));
         }*/
     }
-    @RequestMapping("/")
+    @RequestMapping("/parse.json")
     @ResponseBody
     public Grechka getParse() throws JSONException {
-        obj.put("name","Andrii");
+
         grechka = new Grechka(obj);
 
         return grechka;
     }
     @RequestMapping("/search.json")
     @ResponseBody
-    public Grechka searchJson() throws JSONException {
+    public JSONObject searchJson() throws JSONException {
         obj.put("name","Andrii");
-        grechka = new Grechka(obj);
 
-        return grechka;
+        return obj;
     }
 
 }
