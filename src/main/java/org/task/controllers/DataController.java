@@ -17,7 +17,7 @@ public class DataController {
 
     @RequestMapping("/")
     public void getSortedData() throws IOException {
-        array = parser.parse();
+        //array = parser.parse();
         /*
         array =  parser.sort();
         for (int i = 0;i<array.size();i++){
