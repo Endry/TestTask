@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.task.Grechka;
 import org.task.Parser;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class DataController {
     Parser parser = new Parser();
     JSONArray array = new JSONArray();
     JSONObject obj = new JSONObject();
-
+    Grechka grechka;
     @RequestMapping("/")
     public void getSortedData() throws IOException {
         //array = parser.parse();
@@ -24,10 +25,21 @@ public class DataController {
             System.out.println(array.get(i));
         }*/
     }
-
-    @RequestMapping("/search.json")
-    public String getParse() throws JSONException {
+    @RequestMapping("/")
+    @ResponseBody
+    public Grechka getParse() throws JSONException {
         obj.put("name","Andrii");
-        return obj.toString();
+        grechka = new Grechka(obj);
+
+        return grechka;
     }
+    @RequestMapping("/search.json")
+    @ResponseBody
+    public Grechka searchJson() throws JSONException {
+        obj.put("name","Andrii");
+        grechka = new Grechka(obj);
+
+        return grechka;
+    }
+
 }
