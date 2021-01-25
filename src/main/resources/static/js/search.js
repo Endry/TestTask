@@ -1,8 +1,11 @@
-$('.button_st').on('click', function() {
+function getSearch() {
   $('#bloc_m').animate({opacity:.5});
-  //  $.getJSON("demo_ajax_json.js", function(result){
-    //  $.each(result, function(i, field){
-    //    $("div").append(field + " ");
-    //  });
-  //  });
-});
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'phones.json', false);
+  xhr.send();
+  if (xhr.status != 200) { // обработать ошибку
+    alert('Ошибка ' + xhr.status + ': ' + xhr.statusText);
+  } else { // вывести результат
+    alert(xhr.responseText);
+  }
+}
