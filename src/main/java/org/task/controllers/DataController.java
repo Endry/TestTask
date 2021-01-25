@@ -25,11 +25,9 @@ public class DataController {
         }*/
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    @GetMapping("/search.json")
-    @ResponseBody
-    public JSONObject getParse() throws JSONException {
+    @RequestMapping("/search.json")
+    public String getParse() throws JSONException {
         obj.put("name","Andrii");
-        return obj;
+        return obj.toString();
     }
 }
