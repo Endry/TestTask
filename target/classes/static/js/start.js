@@ -13,7 +13,7 @@ $(document).ready (function getStart() {
        var listOfTr = tbodyOfTable.children;
        var newTr = document.createElement('tr');
        newTr.innerHTML = '<td><a href="'+myObject[i]["link"]+'"><img src="'+ myObject[i]["img"] +'"></a></td><td>'+myObject[i]["name"]+'</td><td>'+myObject[i]["price"]+'</td><td>'+myObject[i]["country"]+'</td><td>'+myObject[i]["weight"]+'</td>';
-       tbodyOfTable.insertBefore(newTr, listOfTr[(listOfTr.length)-1]);
+       tbodyOfTable.insertBefore(newTr, listOfTr[(listOfTr.length)]);
     }
   }
 });

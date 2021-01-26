@@ -32,7 +32,7 @@
                                                 <input type='range' min='100' max='3500' step='400' value='100' oninput='this.parentNode.dataset.lbound=this.value;'/>
                                                 <input type='range' min='100' max='3500' step='400' value='3500' oninput='this.parentNode.dataset.ubound=this.value;'/>
                                                 </div>
-                                            <div style="margin: -2px 0 0 85px;"><button onclick="getSearch()" class="button_st" style="margin-left: 10px;" name="SearchButton">Пошук</button></div>
+                                            <div style="margin: -2px 0 0 85px;"><button onclick="" class="button_st" style="margin-left: 10px;" name="SearchButton">Пошук</button></div>
                                         </div>
                                     </span>
                             </div>
@@ -48,7 +48,7 @@
             <table id="generator_t">
                 <tr>
                     <th colspan="2">Назва</th>
-                    <th><div class="sort_price">Ціна</div></th>
+                    <th><div class="sort_price" onclick="getSort()">Ціна</div></th>
                     <th>Країна виробник</th>
                     <th>Вага</th>
                 </tr>

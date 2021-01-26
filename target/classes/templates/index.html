@@ -48,7 +48,7 @@
             <table id="generator_t">
                 <tr>
                     <th colspan="2">Назва</th>
-                    <th><div class="sort_price">Ціна</div></th>
+                    <th><div class="sort_price" onclick="getSort()">Ціна</div></th>
                     <th>Країна виробник</th>
                     <th>Вага</th>
                 </tr>
@@ -64,5 +64,6 @@
 
 <!-- Connecting external js-files -->
 <script type="text/javascript" th:src="@{/js/start.js}"></script>
+<script type="text/javascript" th:src="@{/js/sort.js}"></script>
 </body>
 </html>
