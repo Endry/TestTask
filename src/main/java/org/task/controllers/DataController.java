@@ -14,27 +14,27 @@ import java.util.ArrayList;
 public class DataController {
     Parser parser = new Parser();
     JSONArray array = new JSONArray();
-    JSONObject obj = new JSONObject();
-    Grechka grechka;
-    ArrayList<Grechka> list = new ArrayList<>();
 
-    @RequestMapping("/parse.json")
-    @ResponseBody
-    public String getParse() throws JSONException, IOException {
-        list.clear();
-        if (array.isEmpty())array = parser.parse();
-        array.remove(array.size()-1);
+    @RequestMapping(value = "/parse.json", method=RequestMethod.GET)
+    public @ResponseBody String getParse() throws JSONException, IOException {
+        array = parser.parse();
 
-        /*
-        for (int i=0;i<array.size();i++){
-            list.add(new Grechka((JSONObject) array.get(i)));
-        }*/
-        //Creating the ObjectMapper object
+        return array.toString();
 
 
-        return array.toJSONString();
+        //if (array.isEmpty()) array = parser.parse();
+       // array.remove(array.size()-1);
+
+       // return array.toJSONString();
     }
-    @RequestMapping("/search.json")
+
+
+
+
+
+
+
+  /*  @RequestMapping("/search.json")
     @ResponseBody
     public ArrayList<Grechka> searchJson(@RequestParam(defaultValue="Ukraine") String country,
                                          @RequestParam(required = false) int min,
@@ -59,5 +59,5 @@ public class DataController {
         }
 
         return list;
-    }
+    } */
 }
