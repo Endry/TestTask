@@ -29,6 +29,7 @@ public class Parser {
     public Parser(){}
 
     public JSONArray parse() throws IOException {
+        array.clear();
         String url = "https://epicentrk.ua/ua/shop/krupy-i-makaronnye-izdeliya/fs/vid-krupa-grechnevaya/";
         Document document = Jsoup.connect(url).get();
         Elements paragraphs = document.select("b.nc");
@@ -221,10 +222,10 @@ public class Parser {
 
     public JSONArray sort(int kom,JSONArray array) {
         JSONArray sortedJsonArray = new JSONArray();
-
+        JSONArray stmp = array;
         List<JSONObject> jsonValues = new ArrayList<JSONObject>();
         for (int i = 0; i < array.size(); i++) {
-            jsonValues.add((JSONObject) array.get(i));
+            jsonValues.add((JSONObject) stmp.get(i));
         }
         Collections.sort(jsonValues, new Comparator<JSONObject>() {
             //You can change "Name" with "ID" if you want to sort by ID
