@@ -14,6 +14,6 @@ public class Application {
     public static void main(String args[]) throws IOException, JSONException {
         SpringApplication.run(Application.class, args);
         Parser parser = new Parser();
-        System.out.println(parser.sort(1,parser.parse()).toString());
+        parser.sort(1,parser.parse()).toString();
     }
 }

@@ -1,7 +1,7 @@
 function getSort() {
   var table = document.getElementById("generator_t");
-  while(table.rows.length > 0) {
-    table.deleteRow(0);
+  while(table.rows.length > 1) {
+    table.deleteRow(1);
   }
 
   var xhr = new XMLHttpRequest();
@@ -12,6 +12,7 @@ function getSort() {
   } else {
     var s = xhr.responseText;
     var myObject = eval('(' + s + ')');
+
     for (i in myObject)
     {
        var tbodyOfTable = document.querySelector('#generator_t tbody');
