@@ -1,0 +1,20 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Test solution of the NetHope team for INT20H.
+The project is implemented with Java, Spring Boot, javascript, pattern MVC, html, css, heroku.
+Our project transfers data from three online stores on request of buckwheat and sorts them by price (by clicking on the title of the price column).
+The project is made from the implementation of the MVC pattern.
+To start, just start the project.
+All the necessary conditions of the hackathon were met, and additional conditional sorting by price was performed.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Тестове завдання команди NetHope для INT20H.
+Проект виконано з використанням Java, Spring Boot, javascript, pattern MVC, html, css, heroku.
+Наш проект виконує парсинг даних з трьох онлайн магазинів по запиту Гречана крупа, та їх сортування за ціною(при натисканні на заголовок колонки ціна).
+Проект виконано з реалізацією паттерну MVC.
+Для запуску достатньо запустити проект.
+Всі необхідні умови хакатону були виконані, також було виконано додаткову умову сортування за ціною.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
