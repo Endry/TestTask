@@ -20,15 +20,19 @@ public class DataController {
 
     @RequestMapping("/parse.json")
     @ResponseBody
-    public ArrayList<Grechka> getParse() throws JSONException, IOException {
+    public String getParse() throws JSONException, IOException {
         list.clear();
         if (array.isEmpty())array = parser.parse();
-        grechka = new Grechka(obj);
+        array.remove(array.size()-1);
+
+        /*
         for (int i=0;i<array.size();i++){
             list.add(new Grechka((JSONObject) array.get(i)));
-        }
+        }*/
+        //Creating the ObjectMapper object
 
-        return list;
+
+        return array.get(array.size()-1).toString();
     }
     @RequestMapping("/search.json")
     @ResponseBody

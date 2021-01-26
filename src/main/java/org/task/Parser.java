@@ -41,12 +41,14 @@ public class Parser {
         int kol=9;
         for (Element paragraph : paragraphs) {
             namesArray.add( paragraph.text());
+            System.out.println(paragraph.text());
             kol--;
             if (kol==0)break;
         }
         kol=9;
         for (Element price : prices) {
             pricesArray.add(price.text());
+            System.out.println(price.text());
             kol--;
             if (kol==0)break;
         }
@@ -56,17 +58,20 @@ public class Parser {
         for (Element link : links) {
             linksArray.add(link.attr("abs:href"));
             countrysArray.add("Україна");
-
+            System.out.println(link.attr("abs:href"));
             kol--;
             if (kol==0)break;
         }
         kol = 9;
         for (Element img : imgs) {
             imgsArray.add(img.attr("src"));
+            System.out.println(img.attr("src"));
             kol--;
             if (kol==0)break;
         }
-        kol =9;
+        kol2 =9;
+        kol=1;
+        System.out.println(chs.isEmpty()+" chs");
         for (Element ch : chs) {
             if(kol==1) {
                 kol=2;
@@ -75,11 +80,18 @@ public class Parser {
                 kol=3;
             }
             else if (kol==3) {
+                /*int check = 1;
+                check = ch.text().substring(ch.text().length()-3,ch.text().length()-1).contains("кг")?1000:1;
+                try {
+                    weightsArray.add(Integer.parseInt(ch.text().substring(5, ch.text().substring(ch.text().length() - 3, ch.text().length() - 1).contains("кг") ? ch.text().length() - 2 : ch.text().length() - 2)) * check);
+                }catch (Exception e){
+                    continue;
+                }*/
                 weightsArray.add(ch.text());
                 System.out.println(ch.text());
                 kol=1;
-                kol--;
-                if (kol==0)break;
+                kol2--;
+                if (kol2==0)break;
             }
 
         }
@@ -90,8 +102,8 @@ public class Parser {
         document = Jsoup.connect(url).get();
         paragraphs = document.select("div.h3.product-title > a");
         imgs = document.select("img.img-fluid.product-thumbnail-first");
-        chs = document.select("product-reference.text-muted > a");
-        prices = document.select("product-price");
+        chs = document.select("div.product-reference.text-muted > a");
+        prices = document.select("span.product-price");
         kol2 = 9;
         int kol3 = 9;
         for (Element paragraph : paragraphs) {
@@ -118,10 +130,23 @@ public class Parser {
             if (kol==0)break;
         }
         kol = 9;
+        kol2=1;
+        System.out.println(chs.isEmpty()+"2");
         for (Element weight : chs){
-            weightsArray.add(weight.text());
-            kol--;
-            if (kol==0)break;
+            if(kol2==1) {
+                /*int check = 1;
+                check = weight.text().substring(weight.text().length()-3,weight.text().length()-1).contains("кг")?1000:1;
+                try {
+                    weightsArray.add(Integer.parseInt(weight.text().substring(8, weight.text().substring(weight.text().length() - 3, weight.text().length() - 1).contains("кг") ? weight.text().length() - 2 : weight.text().length() - 2)) * check);
+                }catch (Exception e){
+                    continue;
+                }*/
+                weightsArray.add(weight.text());
+                System.out.println(weight.text());
+                kol--;
+                if (kol == 0) break;
+                kol2++;
+            }else kol2=1;
         }
 
         url = "https://metro.zakaz.ua/uk/categories/buckwheat-metro/gclid=CjwKCAiA9bmABhBbEiwASb35VyjDKQrhdLqzgEmiAiFPQziRwl-jSh-_PS8pDnM2Xe4KPu7OLR7rQxoCgqMQAvD_BwE/?gclsrc=aw.ds";
@@ -133,10 +158,10 @@ public class Parser {
         chs = document.select("div.jsx-725860710.product-tile__weight");
         kol = 9;
         kol2 = 9;
-
+        System.out.println(links.isEmpty()+" links");
         for (Element link : links){
             linksArray.add(link.attr("abs:href"));
-            System.out.println(link.text());
+            System.out.println(link.attr("title"));
             namesArray.add(link.attr("title"));
             System.out.println(namesArray.get(namesArray.size()-1));
 
@@ -145,7 +170,7 @@ public class Parser {
             if (kol==0)break;
         }
         kol = 9;
-        System.out.println("zzz");
+        System.out.println(imgs.isEmpty()+" imgs");
         for (Element img : imgs){
             imgsArray.add(img.attr("src"));
             kol--;
@@ -160,10 +185,17 @@ public class Parser {
             kol--;
             if (kol==0)break;
         }
-        System.out.println("zzz");
-        kol = 11;
+        System.out.println(chs.isEmpty()+"last");
+        kol = 9;
         for (Element weight : chs){
-            weightsArray.add(chs.text());
+           /* int check = 1;
+            check = weight.text().substring(weight.text().length()-3,weight.text().length()-1).contains("кг")?1000:1;
+            try {
+                weightsArray.add(new Integer(Integer.parseInt(weight.text().substring(0,weight.text().substring(weight.text().length()-3,weight.text().length()-1).contains("кг")?weight.text().length()-2:weight.text().length()-2))*check));
+            }catch (Exception e){
+                continue;
+            }*/
+            weightsArray.add(weight.text());
             kol--;
             if (kol==0)break;
         }
