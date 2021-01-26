@@ -32,7 +32,7 @@
                                                 <input type='range' min='100' max='3500' step='400' value='100' oninput='this.parentNode.dataset.lbound=this.value;'/>
                                                 <input type='range' min='100' max='3500' step='400' value='3500' oninput='this.parentNode.dataset.ubound=this.value;'/>
                                                 </div>
-                                            <div style="margin: -2px 0 0 85px;"><button onclick="" class="button_st" style="margin-left: 10px;" name="SearchButton">Пошук</button></div>
+                                            <div style="margin: -2px 0 0 85px;"><button onclick="getSearch()" class="button_st" style="margin-left: 10px;" name="SearchButton">Пошук</button></div>
                                         </div>
                                     </span>
                             </div>
@@ -64,5 +64,6 @@
 
 <!-- Connecting external js-files -->
 <script type="text/javascript" th:src="@{/js/start.js}"></script>
+<script type="text/javascript" th:src="@{/js/sort.js}"></script>
 </body>
 </html>
