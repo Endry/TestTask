@@ -3,12 +3,12 @@ package org.task.controllers;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.simple.JSONArray;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.task.Grechka;
 import org.task.Parser;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @RestController
 public class DataController {
@@ -16,29 +16,33 @@ public class DataController {
     JSONArray array = new JSONArray();
     JSONObject obj = new JSONObject();
     Grechka grechka;
-    @RequestMapping("/")
-    public void getSortedData() throws IOException {
-        array = parser.parse();
-        /*
-        array =  parser.sort();
-        for (int i = 0;i<array.size();i++){
-            System.out.println(array.get(i));
-        }*/
-    }
+    ArrayList<Grechka> list = new ArrayList<>();
+
     @RequestMapping("/parse.json")
     @ResponseBody
-    public Grechka getParse() throws JSONException {
-
+    public ArrayList<Grechka> getParse() throws JSONException, IOException {
+        list.clear();
+        if (array.isEmpty())array = parser.parse();
         grechka = new Grechka(obj);
+        for (int i=0;i<array.size();i++){
+            list.add(new Grechka((JSONObject) array.get(i)));
+        }
 
-        return grechka;
+        return list;
     }
     @RequestMapping("/search.json")
     @ResponseBody
-    public JSONObject searchJson() throws JSONException {
-        obj.put("name","Andrii");
+    public ArrayList<Grechka> searchJson(@RequestParam(defaultValue="Ukraine") String country,
+                                         @RequestParam(required = false) int min,
+                                         @RequestParam(required = false) int max) throws JSONException, IOException {
+        list.clear();
+        if (array.isEmpty())array = parser.parse();
+        array = parser.paramSearch(country,min,max);
+        for (int i=0;i<array.size();i++){
+            list.add(new Grechka((JSONObject) array.get(i)));
+        }
 
-        return obj;
+        return list;
     }
 
 }

@@ -3,16 +3,26 @@ package org.task;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.*;
+
 public class Grechka {
     String name, price, img, link, country, weight;
+    HashMap<String, String> map = new HashMap<>();
+
 
     public Grechka(JSONObject object) throws JSONException {
         name = (String) object.get("name");
+
         price = (String) object.get("price");
+
         img = (String) object.get("img");
         link = (String) object.get("link");
         country = (String) object.get("country");
         weight = (String) object.get("weight");
+    }
+
+    public  HashMap<String,String> getAll(){
+        return map;
     }
 
     public String getName() {

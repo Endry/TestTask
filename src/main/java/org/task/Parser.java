@@ -38,14 +38,21 @@ public class Parser {
         Elements chs = document.select("ul.card__characteristics > li");
         Elements prices = document.select("span.card__price-sum");
         Elements countrys;
-
+        int kol=10;
         for (Element paragraph : paragraphs) {
             namesArray.add( paragraph.text());
+            kol--;
+            if (kol==0)break;
         }
+        kol=10;
         for (Element price : prices) {
             pricesArray.add(price.text());
+            kol--;
+            if (kol==0)break;
         }
         char c ='\\';
+        kol=10;
+        int kol2=10;
         for (Element link : links) {
             linksArray.add(link.attr("abs:href"));
 
@@ -54,6 +61,7 @@ public class Parser {
 
             document = Jsoup.connect(url).get();
             countrys = document.select("span.p-char__value > span");
+
             for (Element country : countrys) {
                 if (country.text().equals("Україна")) {
                     countrysArray.add(country.text());
@@ -69,12 +77,19 @@ public class Parser {
                     countrysArray.add("Україна");
                     System.out.println("Україна");
                 }
+                kol2--;
+                if (kol2==0)break;
             }
+            kol--;
+            if (kol==0)break;
         }
-
+        kol = 10;
         for (Element img : imgs) {
             imgsArray.add(img.attr("src"));
+            kol--;
+            if (kol==0)break;
         }
+        kol =10;
         for (Element ch : chs) {
             if(kol==1) {
                 kol=2;
@@ -87,6 +102,8 @@ public class Parser {
                 System.out.println(ch.text());
                 kol=1;
             }
+            kol--;
+            if (kol==0)break;
         }
 
 
@@ -97,7 +114,8 @@ public class Parser {
         imgs = document.select("img.lazyImage__image--APkHl");
         chs = document.select("ul.card__characteristics > li");
 
-
+        kol2 = 10;
+        int kol3 = 10;
         for (Element paragraph : paragraphs) {
             namesArray.add(paragraph.attr("title"));
             linksArray.add(paragraph.attr("abs:href"));
@@ -116,9 +134,12 @@ public class Parser {
                     weightsArray.add(element.text());
                     kol++;
                 }
+                kol3--;
+                if (kol3==0)break;
             }
 
             kol = 1;
+            kol3=10;
             for (Element price : prices) {
                 if (kol==2)break;
                 else if (price.text().contains("грн")) {
@@ -126,13 +147,18 @@ public class Parser {
                     System.out.println(price.text() );
                     kol++;
                 }
+                kol3--;
+                if (kol3==0)break;
             }
 
-
+            kol2--;
+            if (kol2==0)break;
         }
-
+        kol = 10;
         for (Element img : imgs) {
             imgsArray.add(img.attr("src"));
+            kol--;
+            if (kol==0)break;
         }
 
         url = "https://rozetka.com.ua/ua/krupy/c4628397/vid-225787=grechka/";
@@ -142,8 +168,9 @@ public class Parser {
 
         prices = document.select("span.goods-tile__price-value");
 
-        kol = 1;
-        int kol2 = 1;
+        kol = 10;
+        kol2 = 10;
+
         for (Element link : links){
             linksArray.add(link.attr("abs:href"));
             System.out.println(link.text());            namesArray.add(link.text());
@@ -156,21 +183,32 @@ public class Parser {
             imgs = document.select("img.product-photo__picture");
             for (Element img : imgs){
                 imgsArray.add(imgs.attr("src"));
+                kol2--;
+                if (kol2==0)break;
             }
             weightsArray.add("");
             countrysArray.add("Україна");
+            kol--;
+            if (kol==0)break;
         }
+        kol = 10;
         System.out.println("zzz");
         for (Element img : imgs){
             imgsArray.add(img.attr("src"));
+            kol--;
+            if (kol==0)break;
         }
         System.out.println("zzz");
+        kol = 10;
         for (Element price : prices){
             System.out.println(price.text());
             pricesArray.add(price.text());
             System.out.println(pricesArray.get(pricesArray.size()-1));
+            kol--;
+            if (kol==0)break;
         }
         System.out.println("zzz");
+
         while (weightsArray.size()!=linksArray.size()){
             weightsArray.add("");
         }
@@ -240,5 +278,24 @@ public class Parser {
 
         return sortedJsonArray;
     }
+    JSONArray paramArray = new JSONArray();
+    public JSONArray paramSearch(String c, int wmin, int wmax ) {
+
+        for (int i = 0; i < array.size(); i++) {
+            obj = (JSONObject) array.get(i);
+            int weight = (int) obj.get("weight");
+            if ((weight < wmax) && (weight > wmin)) {
+
+                if (obj.get("country").equals(c)) {
+                    paramArray.add(array.get(i));
+
+                }
+            }
+        }
+
+        return paramArray;
+    }
+
+
 
 }
