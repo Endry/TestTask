@@ -23,7 +23,7 @@ public class Parser {
     ArrayList<String> linksArray = new ArrayList<>();
     ArrayList<String> imgsArray = new ArrayList<>();
     ArrayList<String> countrysArray = new ArrayList<>();
-    ArrayList<Integer> weightsArray = new ArrayList<>();
+    ArrayList<String> weightsArray = new ArrayList<>();
 
     int kol = 1;
     public Parser(){}
@@ -74,6 +74,7 @@ public class Parser {
                 kol=3;
             }
             else if (kol==3) {
+                /*
                 int check = 1;
                 check = ch.text().substring(ch.text().length()-3,ch.text().length()-1).contains("кг")?1000:1;
                 try {
@@ -84,7 +85,8 @@ public class Parser {
                     countrysArray.remove(countrysArray.size()-1);
                     imgsArray.remove(imgsArray.size()-1);
                     linksArray.remove(linksArray.size()-1);
-                }
+                }*/
+                weightsArray.add(ch.text());
                 kol=1;
                 kol2--;
                 if (kol2==0)break;
@@ -129,6 +131,7 @@ public class Parser {
         kol2=1;
         for (Element weight : chs){
             if(kol2==1) {
+                /*
                 int check = 1;
                 check = weight.text().substring(weight.text().length()-3,weight.text().length()-1).contains("кг")?1000:1;
                 try {
@@ -139,7 +142,8 @@ public class Parser {
                     countrysArray.remove(countrysArray.size()-1);
                     imgsArray.remove(imgsArray.size()-1);
                     linksArray.remove(linksArray.size()-1);
-                }
+                }*/
+                weightsArray.add(weight.text());
                 kol--;
                 if (kol == 0) break;
                 kol2++;
@@ -177,6 +181,7 @@ public class Parser {
 
         kol = 9;
         for (Element weight : chs){
+            /*
             int check = 1;
             check = weight.text().substring(weight.text().length()-3,weight.text().length()-1).contains("кг")?1000:1;
             try {
@@ -187,7 +192,8 @@ public class Parser {
                 countrysArray.remove(countrysArray.size()-1);
                 imgsArray.remove(imgsArray.size()-1);
                 linksArray.remove(linksArray.size()-1);
-            }
+            }*/
+            weightsArray.add(weight.text());
             kol--;
             if (kol==0)break;
         }
