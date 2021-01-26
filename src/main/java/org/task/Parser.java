@@ -223,14 +223,12 @@ public class Parser {
     public JSONArray sort(int kom,JSONArray array) {
         JSONArray sortedJsonArray = new JSONArray();
         JSONArray stmp = array;
-        stmp.clear();
         List<JSONObject> jsonValues = new ArrayList<JSONObject>();
         jsonValues.clear();
         for (int i = 0; i < array.size(); i++) {
             jsonValues.add((JSONObject) stmp.get(i));
         }
         Collections.sort(jsonValues, new Comparator<JSONObject>() {
-            //You can change "Name" with "ID" if you want to sort by ID
             private static final String KEY_NAME = "price";
 
 
@@ -248,14 +246,13 @@ public class Parser {
                     return valA.compareTo(valB);
                 }else if (kom==2)return -valA.compareTo(valB);
                 else return valA.compareTo(valB);
-                //if you want to change the sort order, simply use the following:
-                //return -valA.compareTo(valB);
             }
         });
         for (int i = 0; i < jsonValues.size()-1; i++) {
                 sortedJsonArray.add((jsonValues.get(i)));
         }
 
+        stmp.clear();
         return sortedJsonArray;
     }
     JSONArray paramArray = new JSONArray();
