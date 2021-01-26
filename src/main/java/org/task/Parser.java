@@ -246,9 +246,12 @@ public class Parser {
                 //return -valA.compareTo(valB);
             }
         });
-
-        for (int i = 0; i < array.size(); i++) {
-            sortedJsonArray.add((jsonValues.get(i)));
+        int kol =1;
+        for (int i = 0; i < jsonValues.size()-1; i++) {
+            if (kol==1) {
+                sortedJsonArray.add((jsonValues.get(i)));
+                kol++;
+            }else kol=1;
         }
 
         return sortedJsonArray;

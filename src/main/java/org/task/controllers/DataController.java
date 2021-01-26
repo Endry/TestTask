@@ -18,6 +18,7 @@ public class DataController {
 
     @RequestMapping(value = "/parse.json", method=RequestMethod.GET)
     public @ResponseBody String getParse() throws JSONException, IOException {
+        array.clear();
         array = parser.parse();
 
         return array.toString();
@@ -27,7 +28,7 @@ public class DataController {
     public @ResponseBody String searchJson(@RequestParam(defaultValue="Ukraine") String country,
                                            @RequestParam(required = false) int min,
                                            @RequestParam(required = false) int max) throws JSONException, IOException {
-
+        array.clear();
         array = parser.paramSearch(country,min,max);
 
         if (array.isEmpty()) return "Результатів не знайдено!";
@@ -38,6 +39,7 @@ public class DataController {
 
     @RequestMapping(value = "/sort.json", method=RequestMethod.GET)
     public @ResponseBody String sortJson() throws JSONException, IOException {
+        array.clear();
         if (kom==1) {
             array = parser.sort(kom, parser.parse());
             kom++;
