@@ -20,44 +20,25 @@ public class DataController {
         array = parser.parse();
 
         return array.toString();
-
-
-        //if (array.isEmpty()) array = parser.parse();
-       // array.remove(array.size()-1);
-
-       // return array.toJSONString();
     }
 
+    @RequestMapping(value = "/search.json", method=RequestMethod.GET)
+    public @ResponseBody String searchJson(@RequestParam(defaultValue="Ukraine") String country,
+                                           @RequestParam(required = false) int min,
+                                           @RequestParam(required = false) int max) throws JSONException, IOException {
 
-
-
-
-
-
-  /*  @RequestMapping("/search.json")
-    @ResponseBody
-    public ArrayList<Grechka> searchJson(@RequestParam(defaultValue="Ukraine") String country,
-                                         @RequestParam(required = false) int min,
-                                         @RequestParam(required = false) int max) throws JSONException, IOException {
-        list.clear();
-        if (array.isEmpty())array = parser.parse();
         array = parser.paramSearch(country,min,max);
-        for (int i=0;i<array.size();i++){
-            list.add(new Grechka((JSONObject) array.get(i)));
-        }
 
-        return list;
+        if (array.isEmpty()) return "Результатів не знайдено!";
+
+        return array.toString();
     }
-    @RequestMapping("/sort.json")
-    @ResponseBody
-    public ArrayList<Grechka> sortJson(@RequestParam(required = false) int kom) throws JSONException, IOException {
-        list.clear();
-        if (array.isEmpty())array = parser.sort(kom, parser.parse());
-        grechka = new Grechka(obj);
-        for (int i=0;i<array.size();i++){
-            list.add(new Grechka((JSONObject) array.get(i)));
-        }
 
-        return list;
-    } */
+
+    @RequestMapping(value = "/sort.json", method=RequestMethod.GET)
+    public @ResponseBody String sortJson(@RequestParam(required = false) int kom) throws JSONException, IOException {
+        array = parser.sort(kom, parser.parse());
+
+        return array.toString();
+    }
 }
