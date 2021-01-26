@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @RestController
 public class DataController {
     Parser parser = new Parser();
-    JSONArray array = new JSONArray();
+    static JSONArray array = new JSONArray();
     int kom =1;
 
     @RequestMapping(value = "/parse.json", method=RequestMethod.GET)
