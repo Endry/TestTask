@@ -38,58 +38,35 @@ public class Parser {
         Elements chs = document.select("ul.card__characteristics > li");
         Elements prices = document.select("span.card__price-sum");
         Elements countrys;
-        int kol=10;
+        int kol=9;
         for (Element paragraph : paragraphs) {
             namesArray.add( paragraph.text());
             kol--;
             if (kol==0)break;
         }
-        kol=10;
+        kol=9;
         for (Element price : prices) {
             pricesArray.add(price.text());
             kol--;
             if (kol==0)break;
         }
         char c ='\\';
-        kol=10;
-        int kol2=10;
+        kol=9;
+        int kol2=9;
         for (Element link : links) {
             linksArray.add(link.attr("abs:href"));
+            countrysArray.add("Україна");
 
-            url = link.attr("abs:href");
-            url = url.replace(c,' ');
-
-            document = Jsoup.connect(url).get();
-            countrys = document.select("span.p-char__value > span");
-
-            for (Element country : countrys) {
-                if (country.text().equals("Україна")) {
-                    countrysArray.add(country.text());
-                    System.out.println(country.text());
-                }
-                else if (country.text().equals("Росія")){
-                    countrysArray.add(country.text());
-                    System.out.println(country.text());
-                }else if (country.text().equals("Німеччина")){
-                    countrysArray.add(country.text());
-                    System.out.println(country.text());
-                }else if (country.text().equals(null)){
-                    countrysArray.add("Україна");
-                    System.out.println("Україна");
-                }
-                kol2--;
-                if (kol2==0)break;
-            }
             kol--;
             if (kol==0)break;
         }
-        kol = 10;
+        kol = 9;
         for (Element img : imgs) {
             imgsArray.add(img.attr("src"));
             kol--;
             if (kol==0)break;
         }
-        kol =10;
+        kol =9;
         for (Element ch : chs) {
             if(kol==1) {
                 kol=2;
@@ -101,97 +78,73 @@ public class Parser {
                 weightsArray.add(ch.text());
                 System.out.println(ch.text());
                 kol=1;
+                kol--;
+                if (kol==0)break;
             }
-            kol--;
-            if (kol==0)break;
+
         }
 
 
 
-        url = "https://prom.ua/ua/Krupa-grechnevaya.html?sort=-score";
+        url = "https://fozzyshop.ua/300143-krupa-grechnevaya";
         document = Jsoup.connect(url).get();
-        paragraphs = document.select("a.productTile__tileLink--204An");
-        imgs = document.select("img.lazyImage__image--APkHl");
-        chs = document.select("ul.card__characteristics > li");
-
-        kol2 = 10;
-        int kol3 = 10;
+        paragraphs = document.select("div.h3.product-title > a");
+        imgs = document.select("img.img-fluid.product-thumbnail-first");
+        chs = document.select("product-reference.text-muted > a");
+        prices = document.select("product-price");
+        kol2 = 9;
+        int kol3 = 9;
         for (Element paragraph : paragraphs) {
-            namesArray.add(paragraph.attr("title"));
+            if (paragraph.text().contains("Крупа")){
+            namesArray.add(paragraph.text());
             linksArray.add(paragraph.attr("abs:href"));
             countrysArray.add("Україна");
-            url = paragraph.attr("abs:href");
-            url = url.replace(c,' ');
-            document = Jsoup.connect(url).get();
-            prices = document.select("span.ek-text_weight_bold");
-            chs = document.select("div > span");
-
-            kol = 1;
-            for (Element element : chs) {
-                if (element.text().equals("Вага")) {
-                    kol++;
-                } else if (kol % 2 == 0) {
-                    weightsArray.add(element.text());
-                    kol++;
-                }
-                kol3--;
-                if (kol3==0)break;
-            }
-
-            kol = 1;
-            kol3=10;
-            for (Element price : prices) {
-                if (kol==2)break;
-                else if (price.text().contains("грн")) {
-                    pricesArray.add(price.text());
-                    System.out.println(price.text() );
-                    kol++;
-                }
-                kol3--;
-                if (kol3==0)break;
-            }
 
             kol2--;
             if (kol2==0)break;
+            }
         }
-        kol = 10;
+        kol = 9;
         for (Element img : imgs) {
             imgsArray.add(img.attr("src"));
             kol--;
             if (kol==0)break;
         }
 
-        url = "https://rozetka.com.ua/ua/krupy/c4628397/vid-225787=grechka/";
+        kol = 9;
+        for (Element price : prices) {
+            pricesArray.add(price.text());
+            kol--;
+            if (kol==0)break;
+        }
+        kol = 9;
+        for (Element weight : chs){
+            weightsArray.add(weight.text());
+            kol--;
+            if (kol==0)break;
+        }
+
+        url = "https://metro.zakaz.ua/uk/categories/buckwheat-metro/gclid=CjwKCAiA9bmABhBbEiwASb35VyjDKQrhdLqzgEmiAiFPQziRwl-jSh-_PS8pDnM2Xe4KPu7OLR7rQxoCgqMQAvD_BwE/?gclsrc=aw.ds";
         document = Jsoup.connect(url).get();
-        links = document.select("a.goods-tile__heading");
+        links = document.select("a.jsx-725860710.product-tile");
         Elements names = document.select("span.goods-tile__title");
-
-        prices = document.select("span.goods-tile__price-value");
-
-        kol = 10;
-        kol2 = 10;
+        imgs = document.select("img.jsx-725860710.product-tile__image-i");
+        prices = document.select("span.jsx-3642073353.Price__value_caption");
+        chs = document.select("div.jsx-725860710.product-tile__weight");
+        kol = 9;
+        kol2 = 9;
 
         for (Element link : links){
             linksArray.add(link.attr("abs:href"));
-            System.out.println(link.text());            namesArray.add(link.text());
+            System.out.println(link.text());
+            namesArray.add(link.attr("title"));
             System.out.println(namesArray.get(namesArray.size()-1));
 
-            url = link.attr("abs:href");
-            url = url.replace(c,' ');
-
-            document = Jsoup.connect(url).get();
-            imgs = document.select("img.product-photo__picture");
-            for (Element img : imgs){
-                imgsArray.add(imgs.attr("src"));
-                kol2--;
-                if (kol2==0)break;
-            }
-            weightsArray.add("");
             countrysArray.add("Україна");
             kol--;
             if (kol==0)break;
         }
-        kol = 10;
+        kol = 9;
         System.out.println("zzz");
         for (Element img : imgs){
             imgsArray.add(img.attr("src"));
@@ -199,7 +152,7 @@ public class Parser {
             if (kol==0)break;
         }
         System.out.println("zzz");
-        kol = 10;
+        kol = 9;
         for (Element price : prices){
             System.out.println(price.text());
             pricesArray.add(price.text());
@@ -208,10 +161,13 @@ public class Parser {
             if (kol==0)break;
         }
         System.out.println("zzz");
-
-        while (weightsArray.size()!=linksArray.size()){
-            weightsArray.add("");
+        kol = 11;
+        for (Element weight : chs){
+            weightsArray.add(chs.text());
+            kol--;
+            if (kol==0)break;
         }
+
         System.out.println(imgs.isEmpty());
         System.out.println(namesArray.get(namesArray.size()-1));
 
@@ -247,7 +203,7 @@ public class Parser {
         return array;
     }
 
-    public JSONArray sort() {
+    public JSONArray sort(int kom,JSONArray array) {
         JSONArray sortedJsonArray = new JSONArray();
 
         List<JSONObject> jsonValues = new ArrayList<JSONObject>();
@@ -265,8 +221,10 @@ public class Parser {
 
                 valA = (String) a.get(KEY_NAME);
                 valB = (String) b.get(KEY_NAME);
-
-                return valA.compareTo(valB);
+                if (kom==1) {
+                    return valA.compareTo(valB);
+                }else if (kom==2)return -valA.compareTo(valB);
+                else return valA.compareTo(valB);
                 //if you want to change the sort order, simply use the following:
                 //return -valA.compareTo(valB);
             }

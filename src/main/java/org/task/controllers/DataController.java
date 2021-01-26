@@ -44,5 +44,16 @@ public class DataController {
 
         return list;
     }
+    @RequestMapping("/sort.json")
+    @ResponseBody
+    public ArrayList<Grechka> sortJson(@RequestParam(required = false) int kom) throws JSONException, IOException {
+        list.clear();
+        if (array.isEmpty())array = parser.sort(kom, parser.parse());
+        grechka = new Grechka(obj);
+        for (int i=0;i<array.size();i++){
+            list.add(new Grechka((JSONObject) array.get(i)));
+        }
 
+        return list;
+    }
 }
