@@ -32,7 +32,7 @@ public class DataController {
         //Creating the ObjectMapper object
 
 
-        return array.get(array.size()-1).toString();
+        return array.toJSONString();
     }
     @RequestMapping("/search.json")
     @ResponseBody

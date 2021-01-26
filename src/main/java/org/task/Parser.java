@@ -24,7 +24,7 @@ public class Parser {
     ArrayList<String> linksArray = new ArrayList<>();
     ArrayList<String> imgsArray = new ArrayList<>();
     ArrayList<String> countrysArray = new ArrayList<>();
-    ArrayList<String> weightsArray = new ArrayList<>();
+    ArrayList<Integer> weightsArray = new ArrayList<>();
 
     int kol = 1;
     public Parser(){
@@ -80,14 +80,17 @@ public class Parser {
                 kol=3;
             }
             else if (kol==3) {
-                /*int check = 1;
+                int check = 1;
                 check = ch.text().substring(ch.text().length()-3,ch.text().length()-1).contains("кг")?1000:1;
                 try {
                     weightsArray.add(Integer.parseInt(ch.text().substring(5, ch.text().substring(ch.text().length() - 3, ch.text().length() - 1).contains("кг") ? ch.text().length() - 2 : ch.text().length() - 2)) * check);
                 }catch (Exception e){
-                    continue;
-                }*/
-                weightsArray.add(ch.text());
+                    namesArray.remove(namesArray.size()-1);
+                    countrysArray.remove(countrysArray.size()-1);
+                    pricesArray.remove(pricesArray.size()-1);
+                    imgsArray.remove(imgsArray.size()-1);
+                    linksArray.remove(linksArray.size()-1);
+                }
                 System.out.println(ch.text());
                 kol=1;
                 kol2--;
@@ -134,14 +137,18 @@ public class Parser {
         System.out.println(chs.isEmpty()+"2");
         for (Element weight : chs){
             if(kol2==1) {
-                /*int check = 1;
+                int check = 1;
                 check = weight.text().substring(weight.text().length()-3,weight.text().length()-1).contains("кг")?1000:1;
                 try {
                     weightsArray.add(Integer.parseInt(weight.text().substring(8, weight.text().substring(weight.text().length() - 3, weight.text().length() - 1).contains("кг") ? weight.text().length() - 2 : weight.text().length() - 2)) * check);
                 }catch (Exception e){
-                    continue;
-                }*/
-                weightsArray.add(weight.text());
+                    namesArray.remove(namesArray.size()-1);
+                    countrysArray.remove(countrysArray.size()-1);
+                    pricesArray.remove(pricesArray.size()-1);
+                    imgsArray.remove(imgsArray.size()-1);
+                    linksArray.remove(linksArray.size()-1);
+                }
+
                 System.out.println(weight.text());
                 kol--;
                 if (kol == 0) break;
@@ -188,14 +195,18 @@ public class Parser {
         System.out.println(chs.isEmpty()+"last");
         kol = 9;
         for (Element weight : chs){
-           /* int check = 1;
+            int check = 1;
             check = weight.text().substring(weight.text().length()-3,weight.text().length()-1).contains("кг")?1000:1;
             try {
                 weightsArray.add(new Integer(Integer.parseInt(weight.text().substring(0,weight.text().substring(weight.text().length()-3,weight.text().length()-1).contains("кг")?weight.text().length()-2:weight.text().length()-2))*check));
             }catch (Exception e){
-                continue;
-            }*/
-            weightsArray.add(weight.text());
+                namesArray.remove(namesArray.size()-1);
+                countrysArray.remove(countrysArray.size()-1);
+                pricesArray.remove(pricesArray.size()-1);
+                imgsArray.remove(imgsArray.size()-1);
+                linksArray.remove(linksArray.size()-1);
+            }
+
             kol--;
             if (kol==0)break;
         }
@@ -230,6 +241,7 @@ public class Parser {
             System.out.println("6");
 
             array.add(obj);
+
         }
 
         return array;
@@ -244,7 +256,7 @@ public class Parser {
         }
         Collections.sort(jsonValues, new Comparator<JSONObject>() {
             //You can change "Name" with "ID" if you want to sort by ID
-            private static final String KEY_NAME = "price";
+            private final String KEY_NAME = "price";
 
             @Override
             public int compare(JSONObject a, JSONObject b) {

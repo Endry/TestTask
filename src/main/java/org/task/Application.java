@@ -15,7 +15,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
         //JSONObject obj;
         Parser parser = new Parser();
-        parser.parse();
+        System.out.println(parser.sort(1,parser.parse()));
         /*JSONArray array;
         array =  parser.sort();
         for (int i = 0;i<array.size();i++){
