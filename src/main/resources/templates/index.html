@@ -27,12 +27,12 @@
                                                 <option>Польща</option>
                                             </select>
                                             <p>Вага:</p>
-                                                <div class='multi-range' data-lbound='200' data-ubound='1200'>
+                                                <div class='multi-range' data-lbound='100' data-ubound='3300'>
                                                 <hr/>
-                                                <input type='range' min='200' max='1200' step='100' value='200' oninput='this.parentNode.dataset.lbound=this.value;'/>
-                                                <input type='range' min='200' max='1200' step='100' value='1200' oninput='this.parentNode.dataset.ubound=this.value;'/>
+                                                <input type='range' min='100' max='3500' step='400' value='100' oninput='this.parentNode.dataset.lbound=this.value;'/>
+                                                <input type='range' min='100' max='3500' step='400' value='3500' oninput='this.parentNode.dataset.ubound=this.value;'/>
                                                 </div>
-                                            <div style="margin: -2px 0 0 85px;"><button onclick="getSearch()" class="button_st" style="margin-left: 10px;" name="SearchButton">Пошук</button></div>
+                                            <div style="margin: -2px 0 0 85px;"><button onclick="" class="button_st" style="margin-left: 10px;" name="SearchButton">Пошук</button></div>
                                         </div>
                                     </span>
                             </div>
@@ -43,23 +43,17 @@
         </header>
 
         <hr width="85%">
-
+        <div class="colaps">
         <div class="main">
-            <table>
+            <table id="generator_t">
                 <tr>
                     <th colspan="2">Назва</th>
                     <th><div class="sort_price">Ціна</div></th>
                     <th>Країна виробник</th>
                     <th>Вага</th>
                 </tr>
-                <tr>
-                    <td><a href="#"><img src="https://rice.ua/wp-content/uploads/2019/08/Krupa_Grecka_Nesmaj_190-uk.jpg,qx30436.pagespeed.ce.h4j10AktjR.jpg"></a></td>
-                    <td>Крупа гречана Август</td>
-                    <td>55 грн.</td>
-                    <td>Україна</td>
-                    <td>1000</td>
-                </tr>
             </table>
+        </div>
             <div class="info_main">
                 <img th:src="@{/additionally/info.png}">
                 <div class="info_block"><p>Для сортування за категорією 'Ціна'<br>виберіть даний стовпець в таблиці.</p></div>
@@ -69,6 +63,6 @@
 </div>
 
 <!-- Connecting external js-files -->
-<script type="text/javascript" th:src="@{/js/search.js}"></script>
+<script type="text/javascript" th:src="@{/js/start.js}"></script>
 </body>
 </html>

@@ -27,8 +27,10 @@ option {
     border: 1px solid #fff;
 }
 
-
-
+img {
+    max-width: 150px;
+    max-height: 100px;
+}
 
 * {margin: 0;box-sizing: border-box;}
 .post-wrap {
@@ -111,8 +113,8 @@ th:last-child {
 td {
     vertical-align: middle;
     color: #fff;
-    padding: 10px;
-    font-size: 14px;
+    padding: 5px;
+    font-size: 13px;
     text-align: center;
     border-top: 2px solid #56433D;
     border-bottom: 2px solid #56433D;
@@ -131,14 +133,17 @@ td:nth-child(2){
 .sort_price:hover {
     color: red;
 }
-
 .main {
     margin-top: -2px;
     display: flex;
     flex-wrap: wrap;
     overflow: auto;
-    width: 850px;
+    width: 820px;
     height: 600px;
+}
+.colaps {
+    display: flex;
+    flex-wrap: wrap;
 }
 .info_main {
     max-width: 100%;
