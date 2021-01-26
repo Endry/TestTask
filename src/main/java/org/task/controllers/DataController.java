@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class DataController {
     Parser parser = new Parser();
     JSONArray array = new JSONArray();
+    int kom =1;
 
     @RequestMapping(value = "/parse.json", method=RequestMethod.GET)
     public @ResponseBody String getParse() throws JSONException, IOException {
@@ -36,8 +37,14 @@ public class DataController {
 
 
     @RequestMapping(value = "/sort.json", method=RequestMethod.GET)
-    public @ResponseBody String sortJson(@RequestParam(required = false) int kom) throws JSONException, IOException {
-        array = parser.sort(kom, parser.parse());
+    public @ResponseBody String sortJson() throws JSONException, IOException {
+        if (kom==1) {
+            array = parser.sort(kom, parser.parse());
+            kom++;
+        }else {
+            array = parser.sort(kom, parser.parse());
+            kom=1;
+        }
 
         return array.toString();
     }
